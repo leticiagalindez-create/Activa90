@@ -32,14 +32,33 @@ function renderHeader(name) {
 
 /* ── Render Manual Content ──────────────────────────────────── */
 function renderManualContent() {
-  // Render each tab's content
   document.getElementById('tab-programa').innerHTML = MANUAL_CONTENT.programa;
   document.getElementById('tab-estructura').innerHTML = MANUAL_CONTENT.estructura;
   document.getElementById('tab-clinicas').innerHTML = MANUAL_CONTENT.clinicas;
   document.getElementById('tab-workbook').innerHTML = MANUAL_CONTENT.workbook;
-  document.getElementById('tab-comunicacion').innerHTML = MANUAL_CONTENT.comunicacion;
   document.getElementById('tab-prompts').innerHTML = MANUAL_CONTENT.prompts;
   document.getElementById('tab-compromiso').innerHTML = MANUAL_CONTENT.compromiso;
+  addCopyButtons();
+}
+
+/* ── Copy Buttons for Prompts ───────────────────────────────── */
+function addCopyButtons() {
+  document.querySelectorAll('#tab-prompts p code').forEach(code => {
+    const btn = document.createElement('button');
+    btn.className = 'copy-prompt-btn';
+    btn.textContent = 'Copiar';
+    btn.addEventListener('click', () => {
+      navigator.clipboard.writeText(code.textContent).then(() => {
+        btn.textContent = '✓ Copiado';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copiar';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    });
+    code.parentElement.insertAdjacentElement('afterend', btn);
+  });
 }
 
 /* ── Setup Tabs ─────────────────────────────────────────────── */

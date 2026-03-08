@@ -95,14 +95,6 @@ function renderGoogleSlidesEmbed(stage, item) {
             </svg>
             Abrir en Google Slides
           </a>
-          <a href="${item.file}" download class="btn btn-ghost btn-sm">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            Descargar PPTX
-          </a>
         </div>
       </div>
       <div class="google-slides-embed__container">
@@ -158,7 +150,7 @@ function renderDownloadCard(stage, item) {
       </div>
 
       <div class="pptx-presentation-card__actions">
-        <a href="${item.file}" download class="btn btn-primary pptx-presentation-card__download">
+        <a href="${encodeURI(item.file)}" download class="btn btn-primary pptx-presentation-card__download">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
             <polyline points="7 10 12 15 17 10"/>
@@ -212,9 +204,6 @@ function renderInlineViewer(stage, item) {
         <button class="pptx-nav__btn" id="next-${uid}" aria-label="Siguiente">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
         </button>
-        <a href="${item.file}" download class="btn btn-ghost btn-sm pptx-nav__dl">
-          ↓ Descargar
-        </a>
       </nav>
     </div>
   `;
@@ -252,7 +241,7 @@ function renderInlineViewer(stage, item) {
 
   try {
     window.$(`#${uid}`).pptxToHtml({
-      pptxFileUrl:      item.file,
+      pptxFileUrl:      encodeURI(item.file),
       slidesScale:      '100%',
       slideMode:        false,
       keyBoardShortCut: false
@@ -275,7 +264,7 @@ function showInlineError(stage, item, message) {
       <h3 class="pptx-error-state__title">Vista previa no disponible</h3>
       <p class="pptx-error-state__message">${message}</p>
       <div class="pptx-error-state__actions">
-        <a href="${item.file}" download class="btn btn-primary">
+        <a href="${encodeURI(item.file)}" download class="btn btn-primary">
           📥 Descargar Presentación
         </a>
         <button class="btn btn-outline" onclick="location.reload()">

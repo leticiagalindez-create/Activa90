@@ -57,35 +57,38 @@ function renderModuleGrid(progMap) {
   const grid = document.getElementById('modules-grid');
   if (!grid) return;
 
-  grid.innerHTML = MODULES.map(m => {
+  grid.innerHTML = MODULES.map((m, index) => {
     const prog      = progMap[m.id] || {};
     const completed = prog.completed || false;
+    const locked    = index > 0 && !(progMap[MODULES[index - 1].id]?.completed);
     const tabs      = buildTabChips(m.tabs);
+    const tag       = locked ? 'div' : 'a';
+    const href      = locked ? '' : `href="module.html?module=${m.id}"`;
 
     return `
-      <a href="module.html?module=${m.id}"
-         class="module-card ${completed ? 'completed' : ''}"
+      <${tag} ${href}
+         class="module-card ${completed ? 'completed' : ''} ${locked ? 'locked' : ''}"
          title="${m.title}">
 
         <div class="module-card__header">
           <span class="module-card__number-badge">
             ${completed ? '✓ ' : ''}Módulo ${m.number}
           </span>
-          <span class="module-card__icon">${m.icon}</span>
+          <span class="module-card__icon">${locked ? '🔒' : m.icon}</span>
         </div>
 
         <div>
           <h3 class="module-card__title">${m.title}</h3>
-          <p class="module-card__subtitle">${m.subtitle}</p>
+          <p class="module-card__subtitle">${locked ? 'Completa el módulo anterior para desbloquear' : m.subtitle}</p>
         </div>
 
         <div class="module-card__footer">
-          <div class="module-card__chips">${tabs}</div>
+          <div class="module-card__chips">${locked ? '' : tabs}</div>
           <span class="module-card__status">
-            ${completed ? '✓ Completado' : '→ Comenzar'}
+            ${completed ? '✓ Completado' : locked ? '🔒 Bloqueado' : '→ Comenzar'}
           </span>
         </div>
-      </a>
+      </${tag}>
     `;
   }).join('');
 }

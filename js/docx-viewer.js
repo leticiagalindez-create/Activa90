@@ -25,7 +25,7 @@ export async function loadDocx(filePath, container, opts = {}) {
   }
 
   try {
-    const response = await fetch(filePath);
+    const response = await fetch(encodeURI(filePath));
 
     if (!response.ok) {
       throw new Error(`HTTP ${response.status} — ${response.statusText}`);

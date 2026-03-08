@@ -274,6 +274,26 @@
   color: var(--color-success);
 }
 
+/* ── Locked Module Card ──────────────────────────────────────── */
+.module-card.locked {
+  opacity:        0.55;
+  cursor:         not-allowed;
+  pointer-events: none;
+}
+
+.module-card.locked::before {
+  display: none;
+}
+
+.module-card.locked .module-card__number-badge {
+  background-color: var(--color-border);
+  color:            var(--color-text-muted);
+}
+
+.module-card.locked .module-card__status {
+  color: var(--color-text-muted);
+}
+
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .welcome-banner {

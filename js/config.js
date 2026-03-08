@@ -9,10 +9,8 @@
 const SUPABASE_URL  = 'https://vtsebkjaipjbxcjlfvrk.supabase.co';
 const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ0c2Via2phaXBqYnhjamxmdnJrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NjA2NzYsImV4cCI6MjA4ODQzNjY3Nn0.SlaygQ3R0GQZE7wi-isl8LxWm3AST5TR7ILMtle_ERY';
 
-/* Base path to parent directory where all course files live.
-   When served from the Activa 90-2026/ parent folder via HTTP,
-   files resolve to: http://localhost:8080/FILENAME              */
-const ASSETS_BASE = '../';
+/* Supabase Storage public bucket "Docs"                        */
+const ASSETS_BASE = 'https://vtsebkjaipjbxcjlfvrk.supabase.co/storage/v1/object/public/Docs/';
 
 /* PPTX files larger than this (MB) use download-only mode      */
 const PPTX_EMBED_MAX_MB = 15;
@@ -27,26 +25,12 @@ const MODULES = [
     icon:     '🎯',
     tabs: {
       clinica:      null,
-      presentacion: [
-        {
-          label:  'El Programa',
-          file:   ASSETS_BASE + '0.3.1 Presentación.El Programa que transforma asesores en productores de alto rendimiento.pptx',
-          sizeMB: 13
-        },
-        {
-          label:  'Presentación a Liderazgo',
-          file:   ASSETS_BASE + '0.3.2Presentación a Liderazgo.pptx',
-          sizeMB: 2
-        }
-      ],
+      presentacion: null,
       workbook: {
         file:  ASSETS_BASE + '0.2 CARTA DE COMPROMISO Activa90.docx',
         label: 'Carta de Compromiso'
       },
-      evaluacion: {
-        embedUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfjMMiglkh0OC1YL9HgYXkjwBycbPWlL27YcvurIdzLRH9yoA/viewform?embedded=true',
-        label: 'Evaluación del Módulo'
-      }
+      evaluacion: null
     }
   },
   {
@@ -57,7 +41,7 @@ const MODULES = [
     icon:     '🧠',
     tabs: {
       clinica: {
-        file:  ASSETS_BASE + '2.1 Clínica Entendiendo tu mente.docx',
+        file:  ASSETS_BASE + '2.1 Clinica Entendiendo tu mente.docx',
         label: 'Clínica: Entendiendo Tu Mente'
       },
       presentacion: [
@@ -94,7 +78,7 @@ const MODULES = [
         }
       ],
       workbook: {
-        file:  ASSETS_BASE + '3.2 WORKBOOK DEL ASESOR comunicación asertiva.docx',
+        file:  ASSETS_BASE + 'WORKBOOK_DEL_ASESOR_comunicacion_asertiva.docx',
         label: 'Workbook del Asesor'
       },
       evaluacion: {
@@ -111,19 +95,19 @@ const MODULES = [
     icon:     '💬',
     tabs: {
       clinica: {
-        file:  ASSETS_BASE + '4.0-Comunicación Asertiva_.docx',
+        file:  ASSETS_BASE + '4.0-Comunicacion Asertiva_.docx',
         label: 'Clínica: Comunicación Asertiva'
       },
       presentacion: [
         {
           label:  'Comunicación Asertiva para Negociación de Contratos, Exclusivas y Cierres',
-          file:   ASSETS_BASE + '4.3 Comunicación Asertiva para Negociación de Contratos, Exclusivas y Cierres.pptx',
+          file:   ASSETS_BASE + '4.3 Comunicacion Asertiva para Negociacion de Contratos, Exclusivas y Cierres.pptx',
           sizeMB: 16,
           embedUrl: 'https://docs.google.com/presentation/d/1AcdsczhjWNa7JX0dZuyReVJSjNuRYkYPCofPiGmnfsI/embed?start=false&loop=false&delayms=3000'
         }
       ],
       workbook: {
-        file:  ASSETS_BASE + '4.1Workbook - GUÍA DEL INSTRUCTOR Comunicación Asertiva.docx',
+        file:  ASSETS_BASE + '4.1Workbook - GUIA DEL INSTRUCTOR Comunicacion Asertiva.docx',
         label: 'Guía del Instructor'
       },
       evaluacion: {
@@ -146,13 +130,12 @@ const MODULES = [
       presentacion: [
         {
           label:  'Clínica Avanzada de Listados',
-          file:   ASSETS_BASE + '5.3 Clínica Avanzada de Listados.pptx',
           sizeMB: 53,
           embedUrl: 'https://docs.google.com/presentation/d/19fWnMOD879dB56hxhhB4bsDEovf_UWer7a3nDzGJ43Y/embed?start=false&loop=false&delayms=3000'
         }
       ],
       workbook: {
-        file:  ASSETS_BASE + '5.2 Workbook Clínica Avanzada de Listados.docx',
+        file:  ASSETS_BASE + 'WorkbookClinicaAvanzadadeListados.docx',
         label: 'Workbook de Listados'
       },
       evaluacion: {
@@ -185,30 +168,12 @@ const MODULES = [
 /* ── Resources Manifest ───────────────────────────────────── */
 const RESOURCES = [
   {
-    id:          'scoreboard',
-    title:       'Scoreboard Activa 90',
-    description: 'Plantilla de puntuación para PC y TL. Registra métricas y desempeño del equipo en tiempo real.',
-    file:        ASSETS_BASE + 'ACTIVA90_Scoreboard_PC_TL_Template.xlsx',
-    icon:        '🏆',
-    category:    'Métricas',
-    color:       '#A8001C'
-  },
-  {
     id:          'integrantes',
     title:       'Integrantes Activa 90',
     description: 'Directorio completo de participantes del programa cohorte 2026.',
     file:        ASSETS_BASE + 'Integrantes Activa 90.xlsx',
     icon:        '👥',
     category:    'Equipo',
-    color:       '#5C5C5C'
-  },
-  {
-    id:          'kw-activa',
-    title:       'KW Activa 90',
-    description: 'Información y datos de la oficina Keller Williams vinculada al programa.',
-    file:        ASSETS_BASE + 'Kw Activa 90.xlsx',
-    icon:        '🏢',
-    category:    'Organización',
     color:       '#5C5C5C'
   },
   {

@@ -168,7 +168,7 @@ function renderWorkbookCard(cfg, container) {
         Descarga este workbook para completar los ejercicios y actividades del módulo.
         Puedes llenarlo directamente en Word o imprimirlo.
       </p>
-      <a href="${cfg.file}" download class="btn btn-primary workbook-dl-card__btn">
+      <a href="${encodeURI(cfg.file)}" download class="btn btn-primary workbook-dl-card__btn">
         📥 Descargar Workbook
       </a>
       <p class="workbook-dl-card__meta">Formato: Microsoft Word (.docx)</p>
