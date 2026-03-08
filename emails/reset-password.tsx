@@ -25,7 +25,7 @@ interface ResetPasswordEmailProps {
 
 const logoUrl =
   process.env.NODE_ENV === 'production'
-    ? 'https://leticiagalindez-create.github.io/Activa90/KWLogo.png'
+    ? 'https://www.activa90.com/KWLogo.png'
     : '/static/KWLogo.png';
 
 export default function ResetPasswordEmail({
@@ -147,7 +147,7 @@ export default function ResetPasswordEmail({
 
 ResetPasswordEmail.PreviewProps = {
   name: 'Leticia Galindez',
-  resetUrl: 'https://leticiagalindez-create.github.io/Activa90/index.html?reset=abc123',
+  resetUrl: 'https://www.activa90.com/index.html?reset=abc123',
   expiresInHours: 1,
 } satisfies ResetPasswordEmailProps;
 

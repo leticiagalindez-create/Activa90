@@ -29,7 +29,7 @@ interface ModuleCompleteEmailProps {
 
 const logoUrl =
   process.env.NODE_ENV === 'production'
-    ? 'https://leticiagalindez-create.github.io/Activa90/KWLogo.png'
+    ? 'https://www.activa90.com/KWLogo.png'
     : '/static/KWLogo.png';
 
 export default function ModuleCompleteEmail({
@@ -213,8 +213,8 @@ ModuleCompleteEmail.PreviewProps = {
   moduleNumber: 3,
   totalModules: 10,
   nextModuleName: 'Prospección y Generación de Leads',
-  nextModuleUrl: 'https://leticiagalindez-create.github.io/Activa90/module.html',
-  dashboardUrl: 'https://leticiagalindez-create.github.io/Activa90/dashboard.html',
+  nextModuleUrl: 'https://www.activa90.com/module.html',
+  dashboardUrl: 'https://www.activa90.com/dashboard.html',
 } satisfies ModuleCompleteEmailProps;
 
 export { ModuleCompleteEmail };

@@ -7,7 +7,7 @@ import { CourseCompleteEmail } from './course-complete';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const FROM = 'Activa 90 <leticiagalindez@kwcostarica.com>';
-const BASE_URL = 'https://leticiagalindez-create.github.io/Activa90';
+const BASE_URL = 'https://www.activa90.com';
 
 // ─── Email de bienvenida/registro ─────────────────────────────────────────────
 export async function sendWelcomeEmail(to: string, name: string) {

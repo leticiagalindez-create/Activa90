@@ -24,7 +24,7 @@ interface WelcomeEmailProps {
 
 const logoUrl =
   process.env.NODE_ENV === 'production'
-    ? 'https://leticiagalindez-create.github.io/Activa90/KWLogo.png'
+    ? 'https://www.activa90.com/KWLogo.png'
     : '/static/KWLogo.png';
 
 export default function WelcomeEmail({ name, loginUrl }: WelcomeEmailProps) {
@@ -160,7 +160,7 @@ export default function WelcomeEmail({ name, loginUrl }: WelcomeEmailProps) {
 
 WelcomeEmail.PreviewProps = {
   name: 'Leticia Galindez',
-  loginUrl: 'https://leticiagalindez-create.github.io/Activa90/dashboard.html',
+  loginUrl: 'https://www.activa90.com/dashboard.html',
 } satisfies WelcomeEmailProps;
 
 export { WelcomeEmail };

@@ -26,7 +26,7 @@ interface CourseCompleteEmailProps {
 
 const logoUrl =
   process.env.NODE_ENV === 'production'
-    ? 'https://leticiagalindez-create.github.io/Activa90/KWLogo.png'
+    ? 'https://www.activa90.com/KWLogo.png'
     : '/static/KWLogo.png';
 
 export default function CourseCompleteEmail({
@@ -217,8 +217,8 @@ export default function CourseCompleteEmail({
 CourseCompleteEmail.PreviewProps = {
   name: 'Leticia Galindez',
   totalModules: 10,
-  certificateUrl: 'https://leticiagalindez-create.github.io/Activa90/index.html',
-  dashboardUrl: 'https://leticiagalindez-create.github.io/Activa90/dashboard.html',
+  certificateUrl: 'https://www.activa90.com/index.html',
+  dashboardUrl: 'https://www.activa90.com/dashboard.html',
 } satisfies CourseCompleteEmailProps;
 
 export { CourseCompleteEmail };
