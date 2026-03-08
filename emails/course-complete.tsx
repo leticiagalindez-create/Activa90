@@ -24,10 +24,10 @@ interface CourseCompleteEmailProps {
   dashboardUrl: string;
 }
 
-const baseURL =
+const logoUrl =
   process.env.NODE_ENV === 'production'
-    ? 'https://activa90.com'
-    : '';
+    ? 'https://leticiagalindez-create.github.io/Activa90/KWLogo.png'
+    : '/static/KWLogo.png';
 
 export default function CourseCompleteEmail({
   name,
@@ -37,22 +37,7 @@ export default function CourseCompleteEmail({
 }: CourseCompleteEmailProps) {
   return (
     <Html lang="es">
-      <Tailwind
-        config={{
-          presets: [pixelBasedPreset],
-          theme: {
-            extend: {
-              colors: {
-                brand: '#A8001C',
-                'brand-dark': '#7A0015',
-                offwhite: '#F5F0EB',
-                gold: '#B45309',
-                'gold-bg': '#FEF3C7',
-              },
-            },
-          },
-        }}
-      >
+      <Tailwind config={{ presets: [pixelBasedPreset] }}>
         <Head>
           <Font
             fontFamily="Montserrat"
@@ -76,119 +61,148 @@ export default function CourseCompleteEmail({
           />
         </Head>
         <Preview>¡Felicidades! Completaste Activa 90 — Eres un Productor de Alto Rendimiento</Preview>
-        <Body className="bg-[#f2f2f2] font-[Montserrat,Arial,sans-serif] py-40">
 
-          <Container className="max-w-[600px] mx-auto">
+        <Body style={{ backgroundColor: '#f2f2f2', fontFamily: 'Montserrat, Arial, sans-serif', margin: 0, padding: '40px 0' }}>
+          <Container style={{ maxWidth: '600px', margin: '0 auto' }}>
 
-            {/* Hero Header — celebración */}
-            <Section className="bg-brand px-40 py-32 rounded-t-[8px] text-center">
-              <Text className="text-[48px] m-0 mb-8">🏆</Text>
-              <Img
-                src={`${baseURL}/static/KWLogo.png`}
-                alt="Keller Williams"
-                width="48"
-                height="48"
-                className="mx-auto mb-8"
-              />
-              <Text className="text-white font-bold text-[26px] m-0 tracking-[2px] uppercase">
+            {/* ── Hero Header ── */}
+            <Section style={{ backgroundColor: '#A8001C', padding: '36px 40px', borderRadius: '8px 8px 0 0', textAlign: 'center' }}>
+              <Text style={{ fontSize: '48px', margin: '0 0 12px' }}>🏆</Text>
+              <Img src={logoUrl} alt="Keller Williams" width="52" height="52" style={{ margin: '0 auto 10px', display: 'block' }} />
+              <Text style={{ color: '#ffffff', fontWeight: 700, fontSize: '24px', margin: 0, letterSpacing: '2px', textTransform: 'uppercase' }}>
                 Activa 90
               </Text>
-              <Text className="text-[rgba(255,255,255,0.75)] text-[11px] m-0 tracking-[1px] uppercase">
+              <Text style={{ color: 'rgba(255,255,255,0.7)', fontSize: '11px', margin: '4px 0 0', letterSpacing: '1px', textTransform: 'uppercase' }}>
                 Keller Williams · Programa Completado
               </Text>
             </Section>
 
-            {/* Gold achievement strip */}
-            <Section className="bg-gold-bg px-48 py-20 text-center">
-              <Text className="text-gold font-bold text-[14px] m-0 uppercase tracking-[2px]">
-                ★ &nbsp; Productor de Alto Rendimiento &nbsp; ★
+            {/* ── Gold strip ── */}
+            <Section style={{ backgroundColor: '#FEF3C7', padding: '14px 48px', textAlign: 'center' }}>
+              <Text style={{ color: '#B45309', fontWeight: 700, fontSize: '13px', margin: 0, textTransform: 'uppercase', letterSpacing: '2px' }}>
+                ★  &nbsp;Productor de Alto Rendimiento&nbsp;  ★
               </Text>
             </Section>
 
-            {/* Body */}
-            <Section className="bg-white px-48 py-40">
-              <Heading className="text-[#0D0D0D] text-[30px] font-bold m-0 mb-8 leading-[1.15] text-center">
+            {/* ── Body ── */}
+            <Section style={{ backgroundColor: '#ffffff', padding: '40px 48px' }}>
+              <Heading style={{ color: '#0D0D0D', fontSize: '30px', fontWeight: 700, margin: '0 0 8px', textAlign: 'center', lineHeight: 1.15 }}>
                 ¡Felicidades, {name}!
               </Heading>
-              <Text className="text-brand font-bold text-[18px] m-0 mb-24 text-center leading-[1.4]">
+              <Text style={{ color: '#A8001C', fontWeight: 700, fontSize: '17px', margin: '0 0 28px', textAlign: 'center', lineHeight: 1.4 }}>
                 Completaste los {totalModules} módulos de Activa 90
               </Text>
 
-              <Text className="text-[#5C5C5C] text-[15px] m-0 mb-16 leading-[1.7]">
-                En 90 días demostraste lo más importante: <strong>consistencia, disciplina y
-                compromiso con tu crecimiento profesional</strong>. Eso es lo que separa a los
-                asesores promedio de los productores de alto rendimiento.
+              <Text style={{ color: '#5C5C5C', fontSize: '15px', lineHeight: 1.7, margin: '0 0 16px' }}>
+                En 90 días demostraste lo más importante:{' '}
+                <strong>consistencia, disciplina y compromiso con tu crecimiento profesional</strong>.
+                Eso es lo que separa a los asesores promedio de los productores de alto rendimiento.
               </Text>
-              <Text className="text-[#5C5C5C] text-[15px] m-0 mb-32 leading-[1.7]">
-                Keller Williams está orgulloso de acompañarte en este camino. Lo que aprendiste
-                aquí no es teoría — es el sistema que usan los mejores agentes del mundo para
-                construir negocios inmobiliarios sólidos y duraderos.
+              <Text style={{ color: '#5C5C5C', fontSize: '15px', lineHeight: 1.7, margin: '0 0 36px' }}>
+                Keller Williams está orgulloso de acompañarte en este camino. Lo que aprendiste aquí
+                no es teoría — es el sistema que usan los mejores agentes del mundo para construir
+                negocios inmobiliarios sólidos y duraderos.
               </Text>
 
-              <Hr className="border-none border-t border-solid border-[#E4DDD6] my-32" />
+              <Hr style={{ border: 'none', borderTop: '1px solid #E4DDD6', margin: '0 0 32px' }} />
 
               {/* Stats */}
-              <Row className="mb-32">
-                <Column className="w-[33%] text-center">
-                  <Text className="text-brand font-bold text-[32px] m-0">{totalModules}</Text>
-                  <Text className="text-[#9B9B9B] text-[12px] m-0 uppercase tracking-[1px]">Módulos</Text>
+              <Row style={{ marginBottom: '36px' }}>
+                <Column style={{ width: '33%', textAlign: 'center' }}>
+                  <Text style={{ color: '#A8001C', fontWeight: 700, fontSize: '36px', margin: '0 0 4px' }}>{totalModules}</Text>
+                  <Text style={{ color: '#9B9B9B', fontSize: '11px', margin: 0, textTransform: 'uppercase', letterSpacing: '1px' }}>Módulos</Text>
                 </Column>
-                <Column className="w-[33%] text-center">
-                  <Text className="text-brand font-bold text-[32px] m-0">90</Text>
-                  <Text className="text-[#9B9B9B] text-[12px] m-0 uppercase tracking-[1px]">Días</Text>
+                <Column style={{ width: '33%', textAlign: 'center', borderLeft: '1px solid #E4DDD6', borderRight: '1px solid #E4DDD6' }}>
+                  <Text style={{ color: '#A8001C', fontWeight: 700, fontSize: '36px', margin: '0 0 4px' }}>90</Text>
+                  <Text style={{ color: '#9B9B9B', fontSize: '11px', margin: 0, textTransform: 'uppercase', letterSpacing: '1px' }}>Días</Text>
                 </Column>
-                <Column className="w-[33%] text-center">
-                  <Text className="text-brand font-bold text-[32px] m-0">100%</Text>
-                  <Text className="text-[#9B9B9B] text-[12px] m-0 uppercase tracking-[1px]">Completado</Text>
+                <Column style={{ width: '33%', textAlign: 'center' }}>
+                  <Text style={{ color: '#A8001C', fontWeight: 700, fontSize: '36px', margin: '0 0 4px' }}>100%</Text>
+                  <Text style={{ color: '#9B9B9B', fontSize: '11px', margin: 0, textTransform: 'uppercase', letterSpacing: '1px' }}>Completado</Text>
                 </Column>
               </Row>
 
-              <Hr className="border-none border-t border-solid border-[#E4DDD6] my-32" />
+              <Hr style={{ border: 'none', borderTop: '1px solid #E4DDD6', margin: '0 0 32px' }} />
 
               {/* CTA */}
               {certificateUrl ? (
-                <>
-                  <Text className="text-[#5C5C5C] text-[15px] m-0 mb-24 text-center leading-[1.6]">
+                <Section>
+                  <Text style={{ color: '#5C5C5C', fontSize: '15px', lineHeight: 1.6, margin: '0 0 24px', textAlign: 'center' }}>
                     Tu certificado de finalización ya está disponible. Descárgalo y compártelo.
                   </Text>
                   <Button
                     href={certificateUrl}
-                    className="bg-brand text-white font-bold text-[15px] px-40 py-16 rounded-[6px] no-underline box-border block text-center mb-16"
+                    style={{
+                      backgroundColor: '#A8001C',
+                      color: '#ffffff',
+                      fontWeight: 700,
+                      fontSize: '15px',
+                      padding: '14px 40px',
+                      borderRadius: '6px',
+                      textDecoration: 'none',
+                      display: 'block',
+                      textAlign: 'center',
+                      boxSizing: 'border-box',
+                      marginBottom: '12px',
+                    }}
                   >
                     Descargar mi certificado
                   </Button>
                   <Button
                     href={dashboardUrl}
-                    className="bg-white text-brand font-bold text-[15px] px-40 py-16 rounded-[6px] no-underline box-border block text-center border-solid border border-brand"
+                    style={{
+                      backgroundColor: '#ffffff',
+                      color: '#A8001C',
+                      fontWeight: 700,
+                      fontSize: '15px',
+                      padding: '13px 40px',
+                      borderRadius: '6px',
+                      textDecoration: 'none',
+                      display: 'block',
+                      textAlign: 'center',
+                      boxSizing: 'border-box',
+                      border: '2px solid #A8001C',
+                    }}
                   >
                     Ver mi progreso
                   </Button>
-                </>
+                </Section>
               ) : (
                 <Button
                   href={dashboardUrl}
-                  className="bg-brand text-white font-bold text-[15px] px-40 py-16 rounded-[6px] no-underline box-border block text-center"
+                  style={{
+                    backgroundColor: '#A8001C',
+                    color: '#ffffff',
+                    fontWeight: 700,
+                    fontSize: '15px',
+                    padding: '14px 40px',
+                    borderRadius: '6px',
+                    textDecoration: 'none',
+                    display: 'block',
+                    textAlign: 'center',
+                    boxSizing: 'border-box',
+                  }}
                 >
                   Ver mi progreso completo
                 </Button>
               )}
             </Section>
 
-            {/* Motivational closing */}
-            <Section className="bg-[rgba(168,0,28,0.08)] px-48 py-24">
-              <Text className="text-brand font-bold text-[14px] m-0 mb-8 uppercase tracking-[1px]">
+            {/* ── Motivational closing ── */}
+            <Section style={{ backgroundColor: 'rgba(168,0,28,0.07)', padding: '24px 48px' }}>
+              <Text style={{ color: '#A8001C', fontWeight: 700, fontSize: '12px', margin: '0 0 8px', textTransform: 'uppercase', letterSpacing: '1px' }}>
                 El siguiente paso es tuyo
               </Text>
-              <Text className="text-[#5C5C5C] text-[14px] m-0 leading-[1.6]">
+              <Text style={{ color: '#5C5C5C', fontSize: '14px', margin: 0, lineHeight: 1.7 }}>
                 El programa terminó, pero tu carrera acaba de comenzar. Usa cada herramienta,
                 cada técnica y cada hábito que construiste aquí para crear resultados reales.
                 Keller Williams estará aquí para apoyarte.
               </Text>
             </Section>
 
-            {/* Footer */}
-            <Section className="bg-[#F5F0EB] px-48 py-24 rounded-b-[8px]">
-              <Text className="text-[#9B9B9B] text-[12px] text-center m-0 leading-[1.6]">
+            {/* ── Footer ── */}
+            <Section style={{ backgroundColor: '#F5F0EB', padding: '24px 48px', borderRadius: '0 0 8px 8px' }}>
+              <Text style={{ color: '#9B9B9B', fontSize: '12px', textAlign: 'center', margin: 0, lineHeight: 1.6 }}>
                 Activa 90 — Programa de Entrenamiento Inmobiliario · Keller Williams 2026
               </Text>
             </Section>
@@ -201,10 +215,10 @@ export default function CourseCompleteEmail({
 }
 
 CourseCompleteEmail.PreviewProps = {
-  name: 'Carlos Ramírez',
+  name: 'Leticia Galindez',
   totalModules: 10,
-  certificateUrl: 'https://activa90.com/certificate/abc123',
-  dashboardUrl: 'https://activa90.com/dashboard',
+  certificateUrl: 'https://leticiagalindez-create.github.io/Activa90/index.html',
+  dashboardUrl: 'https://leticiagalindez-create.github.io/Activa90/dashboard.html',
 } satisfies CourseCompleteEmailProps;
 
 export { CourseCompleteEmail };
