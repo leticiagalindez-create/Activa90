@@ -3,7 +3,7 @@
    Auth modal, sign-in/sign-up handlers
    ============================================================ */
 
-import { signIn, signUp, getCurrentUser } from '../supabase-client.js';
+import { signIn, signUp, getCurrentUser, sendPasswordReset, updatePassword, exchangeCode } from '../supabase-client.js';
 import { showToast, setButtonLoading }    from '../utils.js';
 
 /* ── Redirect if already logged in ─────────────────────────── */
@@ -152,6 +152,113 @@ signUpForm.addEventListener('submit', async (e) => {
         err.textContent = '¡Cuenta creada! Revisa tu correo para confirmar tu cuenta, luego inicia sesión.';
       }
     }
+  }
+});
+
+/* ── Forgot Password ────────────────────────────────────────── */
+const forgotForm   = document.getElementById('forgot-form');
+const resetForm    = document.getElementById('reset-form');
+const forgotLink   = document.getElementById('forgot-password-link');
+const backToSignin = document.getElementById('back-to-signin');
+const forgotSubmit = document.getElementById('forgot-submit');
+const resetSubmit  = document.getElementById('reset-submit');
+
+function showPanel(panel) {
+  [signInForm, signUpForm, forgotForm, resetForm].forEach(el => { if (el) el.hidden = true; });
+  const tabs = document.querySelector('.auth-tabs');
+  if (tabs) tabs.hidden = panel === forgotForm || panel === resetForm;
+  if (panel) panel.hidden = false;
+}
+
+forgotLink?.addEventListener('click', e => {
+  e.preventDefault();
+  showPanel(forgotForm);
+});
+
+backToSignin?.addEventListener('click', e => {
+  e.preventDefault();
+  showPanel(signInForm);
+  const tabs = document.querySelector('.auth-tabs');
+  if (tabs) tabs.hidden = false;
+  authTabs.forEach(t => t.classList.toggle('active', t.dataset.tab === 'signin'));
+});
+
+forgotSubmit?.addEventListener('click', async () => {
+  const email = document.getElementById('forgot-email').value.trim();
+  const errEl = forgotForm.querySelector('.auth-error');
+
+  if (!email) {
+    errEl.textContent = 'Ingresa tu correo electrónico.';
+    errEl.hidden = false;
+    return;
+  }
+
+  forgotSubmit.disabled = true;
+  forgotSubmit.textContent = 'Enviando…';
+  if (errEl) errEl.hidden = true;
+
+  const { error } = await sendPasswordReset(email);
+
+  if (error) {
+    forgotSubmit.disabled = false;
+    forgotSubmit.textContent = 'Enviar link';
+    errEl.textContent = error.message;
+    errEl.hidden = false;
+  } else {
+    forgotSubmit.textContent = 'Link enviado';
+    errEl.className = 'auth-success';
+    errEl.hidden = false;
+    errEl.textContent = 'Revisa tu correo — te enviamos un link para restablecer tu contraseña.';
+  }
+});
+
+/* ── Handle password recovery redirect ─────────────────────── */
+(async function handleRecovery() {
+  const params = new URLSearchParams(window.location.search);
+  const code   = params.get('code');
+  const type   = params.get('type');
+
+  if (code && type === 'recovery') {
+    const { error } = await exchangeCode(code);
+    window.history.replaceState(null, '', window.location.pathname);
+
+    if (!error) {
+      openModal('signin');
+      showPanel(resetForm);
+    }
+  }
+})();
+
+resetSubmit?.addEventListener('click', async () => {
+  const newPass     = document.getElementById('new-password').value;
+  const confirmPass = document.getElementById('confirm-password').value;
+  const errEl       = resetForm.querySelector('.auth-error');
+
+  if (newPass.length < 8) {
+    errEl.textContent = 'La contraseña debe tener al menos 8 caracteres.';
+    errEl.hidden = false;
+    return;
+  }
+  if (newPass !== confirmPass) {
+    errEl.textContent = 'Las contraseñas no coinciden.';
+    errEl.hidden = false;
+    return;
+  }
+
+  resetSubmit.disabled = true;
+  resetSubmit.textContent = 'Guardando…';
+  if (errEl) errEl.hidden = true;
+
+  const { error } = await updatePassword(newPass);
+
+  if (error) {
+    resetSubmit.disabled = false;
+    resetSubmit.textContent = 'Guardar contraseña';
+    errEl.textContent = error.message;
+    errEl.hidden = false;
+  } else {
+    showToast('Contraseña actualizada. Iniciando sesión…', 'success');
+    setTimeout(() => window.location.replace('dashboard.html'), 1500);
   }
 });
 

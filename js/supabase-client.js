@@ -13,7 +13,8 @@ export async function signUp(email, password, fullName) {
     email,
     password,
     options: {
-      data: { full_name: fullName }
+      data: { full_name: fullName },
+      emailRedirectTo: 'https://leticiagalindez-create.github.io/Activa90/dashboard.html'
     }
   });
   return { data, error };
@@ -61,6 +62,26 @@ export async function updateProfile(userId, updates) {
     .eq('id', userId)
     .select()
     .single();
+  return { data, error };
+}
+
+/* ── Reset Password (send email) ────────────────────────────── */
+export async function sendPasswordReset(email) {
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: 'https://leticiagalindez-create.github.io/Activa90/index.html'
+  });
+  return { error };
+}
+
+/* ── Update Password (after clicking reset link) ────────────── */
+export async function updatePassword(newPassword) {
+  const { error } = await supabase.auth.updateUser({ password: newPassword });
+  return { error };
+}
+
+/* ── Exchange Code for Session (email confirmation / recovery) ─ */
+export async function exchangeCode(code) {
+  const { data, error } = await supabase.auth.exchangeCodeForSession(code);
   return { data, error };
 }
 

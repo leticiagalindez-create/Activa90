@@ -189,7 +189,10 @@
                  placeholder="tu@correo.com" required autocomplete="email">
         </div>
         <div class="form-group">
-          <label class="form-label" for="signin-password">Contraseña</label>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:var(--space-2);">
+            <label class="form-label" for="signin-password" style="margin:0;">Contraseña</label>
+            <a href="#" id="forgot-password-link" style="font-size:var(--font-size-sm); color:var(--color-primary);">¿Olvidaste tu contraseña?</a>
+          </div>
           <input class="form-input" id="signin-password" type="password" name="password"
                  placeholder="••••••••" required autocomplete="current-password">
         </div>
@@ -200,6 +203,35 @@
           <a href="#" class="switch-to-signup" style="color:var(--color-primary); font-weight:600;">Regístrate aquí</a>
         </p>
       </form>
+
+      <!-- Forgot Password -->
+      <div id="forgot-form" class="auth-form" hidden>
+        <button id="back-to-signin" style="background:none; border:none; cursor:pointer; color:var(--color-text-muted); font-size:var(--font-size-sm); padding:0; margin-bottom:var(--space-4);">← Volver</button>
+        <h3 style="font-size:var(--font-size-lg); font-weight:700; margin:0 0 var(--space-2);">Restablecer contraseña</h3>
+        <p style="font-size:var(--font-size-sm); color:var(--color-text-muted); margin:0 0 var(--space-6);">Ingresa tu correo y te enviaremos un link para crear una nueva contraseña.</p>
+        <div class="form-group">
+          <label class="form-label" for="forgot-email">Correo electrónico</label>
+          <input class="form-input" id="forgot-email" type="email" placeholder="tu@correo.com" autocomplete="email">
+        </div>
+        <p class="auth-error" hidden></p>
+        <button id="forgot-submit" class="btn btn-primary btn-full">Enviar link</button>
+      </div>
+
+      <!-- New Password (after clicking reset link in email) -->
+      <div id="reset-form" class="auth-form" hidden>
+        <h3 style="font-size:var(--font-size-lg); font-weight:700; margin:0 0 var(--space-2);">Nueva contraseña</h3>
+        <p style="font-size:var(--font-size-sm); color:var(--color-text-muted); margin:0 0 var(--space-6);">Elige una contraseña segura para tu cuenta.</p>
+        <div class="form-group">
+          <label class="form-label" for="new-password">Nueva contraseña</label>
+          <input class="form-input" id="new-password" type="password" placeholder="Mínimo 8 caracteres" autocomplete="new-password" minlength="8">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="confirm-password">Confirmar contraseña</label>
+          <input class="form-input" id="confirm-password" type="password" placeholder="Repite tu contraseña" autocomplete="new-password" minlength="8">
+        </div>
+        <p class="auth-error" hidden></p>
+        <button id="reset-submit" class="btn btn-primary btn-full">Guardar contraseña</button>
+      </div>
 
       <!-- Sign Up -->
       <form id="signup-form" class="auth-form" hidden novalidate>
