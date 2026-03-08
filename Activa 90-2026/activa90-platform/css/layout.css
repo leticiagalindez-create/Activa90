@@ -1,0 +1,246 @@
+/* ============================================================
+   ACTIVA 90 — Layout
+   Header, navigation, page containers, grids
+   ============================================================ */
+
+/* ── App Header ─────────────────────────────────────────────── */
+.app-header {
+  position:         sticky;
+  top:              0;
+  z-index:          var(--z-overlay);
+  display:          flex;
+  align-items:      center;
+  justify-content:  space-between;
+  height:           var(--header-height);
+  padding:          0 var(--content-padding);
+  background-color: var(--color-surface);
+  border-bottom:    1px solid var(--color-border);
+  box-shadow:       var(--shadow-xs);
+  gap:              var(--space-6);
+  transition:       background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.header__logo {
+  display:      flex;
+  align-items:  center;
+  gap:          var(--space-3);
+  text-decoration: none;
+  flex-shrink:  0;
+}
+
+.header__kw-logo {
+  height:       32px;
+  width:        auto;
+  object-fit:   contain;
+  margin-right: var(--space-3);
+}
+
+.header__logo-mark {
+  width:            36px;
+  height:           36px;
+  background-color: var(--color-primary);
+  border-radius:    var(--radius-md);
+  display:          flex;
+  align-items:      center;
+  justify-content:  center;
+  color:            white;
+  font-weight:      var(--font-weight-black);
+  font-size:        var(--font-size-sm);
+  letter-spacing:   -0.03em;
+}
+
+.header__logo-text {
+  font-size:   var(--font-size-md);
+  font-weight: var(--font-weight-black);
+  color:       var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.header__logo-text span {
+  color: var(--color-primary);
+}
+
+.header__nav {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-1);
+  flex:        1;
+}
+
+.nav-link {
+  display:         flex;
+  align-items:     center;
+  gap:             var(--space-2);
+  padding:         var(--space-2) var(--space-4);
+  font-size:       var(--font-size-sm);
+  font-weight:     var(--font-weight-semibold);
+  color:           var(--color-text-muted);
+  text-decoration: none;
+  border-radius:   var(--radius-md);
+  transition:      color var(--transition-fast),
+                   background-color var(--transition-fast);
+  letter-spacing:  0.02em;
+}
+.nav-link:hover {
+  color:            var(--color-text);
+  background-color: var(--color-border-light);
+}
+.nav-link.active {
+  color:            var(--color-primary);
+  background-color: var(--color-primary-light);
+}
+
+.header__user {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-3);
+  flex-shrink: 0;
+}
+
+.user-avatar {
+  width:            36px;
+  height:           36px;
+  border-radius:    var(--radius-full);
+  background-color: var(--color-primary);
+  color:            var(--color-white);
+  display:          flex;
+  align-items:      center;
+  justify-content:  center;
+  font-size:        var(--font-size-sm);
+  font-weight:      var(--font-weight-bold);
+  flex-shrink:      0;
+}
+
+.user-name {
+  font-size:   var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color:       var(--color-text);
+}
+
+/* ── Page Container ─────────────────────────────────────────── */
+.page-container {
+  max-width:   var(--max-width);
+  margin:      0 auto;
+  padding:     var(--content-padding);
+}
+
+.page-container--sm { max-width: var(--max-width-sm); }
+.page-container--full { max-width: 100%; }
+
+/* ── Page Sections ──────────────────────────────────────────── */
+.section {
+  margin-bottom: var(--space-12);
+}
+
+.section-header {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  margin-bottom:   var(--space-6);
+  gap:             var(--space-4);
+}
+
+.section-title {
+  font-size:     var(--font-size-xl);
+  font-weight:   var(--font-weight-bold);
+  color:         var(--color-text);
+  line-height:   var(--line-height-tight);
+  position:      relative;
+  padding-left:  var(--space-4);
+}
+
+.section-title::before {
+  content:          '';
+  position:         absolute;
+  left:             0;
+  top:              50%;
+  transform:        translateY(-50%);
+  width:            4px;
+  height:           100%;
+  background-color: var(--color-primary);
+  border-radius:    var(--radius-full);
+}
+
+/* ── Grids ──────────────────────────────────────────────────── */
+.grid-2 {
+  display:               grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:                   var(--space-6);
+}
+
+.grid-3 {
+  display:               grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:                   var(--space-6);
+}
+
+.grid-4 {
+  display:               grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:                   var(--space-5);
+}
+
+.grid-auto {
+  display:               grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap:                   var(--space-6);
+}
+
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .header__kw-logo {
+    height: 26px;
+  }
+
+  .header__logo-text {
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* ── Footer ─────────────────────────────────────────────────── */
+.app-footer {
+  border-top:   1px solid var(--color-border);
+  padding:      var(--space-8) var(--content-padding);
+  text-align:   center;
+  color:        var(--color-text-muted);
+  font-size:    var(--font-size-sm);
+  margin-top:   var(--space-16);
+  transition:   background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+/* ── Breadcrumb ─────────────────────────────────────────────── */
+.breadcrumb {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-2);
+  font-size:   var(--font-size-sm);
+  color:       var(--color-text-muted);
+  margin-bottom: var(--space-6);
+  flex-wrap:   wrap;
+}
+
+.breadcrumb a {
+  color: var(--color-text-muted);
+  transition: color var(--transition-fast);
+}
+.breadcrumb a:hover { color: var(--color-primary); }
+
+.breadcrumb__separator {
+  color:       var(--color-text-subtle);
+  user-select: none;
+}
+
+.breadcrumb__current {
+  color:       var(--color-text);
+  font-weight: var(--font-weight-medium);
+}

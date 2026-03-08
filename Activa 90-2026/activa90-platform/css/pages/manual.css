@@ -1,0 +1,244 @@
+/* ============================================================
+   ACTIVA 90 — Manual Page Styles (Tabbed Version)
+   ============================================================ */
+
+/* ── Page Layout ───────────────────────────────────────────── */
+.page-manual {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Manual Header ─────────────────────────────────────────── */
+.manual-page-header {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-6) var(--space-4);
+}
+
+.manual-hero {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding-top: var(--space-4);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.manual-hero__icon {
+  font-size: 72px;
+  line-height: 1;
+}
+
+.manual-hero__content h1 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-black);
+  margin: 0 0 var(--space-2);
+  color: var(--color-text);
+}
+
+.manual-hero__subtitle {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  margin: 0 0 var(--space-3);
+}
+
+.manual-hero__description {
+  font-size: var(--font-size-md);
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+}
+
+.manual-hero__actions {
+  display: flex;
+  gap: var(--space-3);
+}
+
+/* ── Manual Container ──────────────────────────────────────── */
+.manual-main {
+  flex: 1;
+  background: var(--color-background);
+}
+
+.manual-container {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-4);
+}
+
+/* ── Tab Navigation ────────────────────────────────────────── */
+.manual-tabs {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  border-bottom: 2px solid var(--color-border);
+  overflow-x: auto;
+  flex-wrap: wrap;
+}
+
+.manual-tab {
+  background: transparent;
+  border: none;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.manual-tab:hover {
+  color: var(--color-text);
+  background: var(--color-surface-hover);
+}
+
+.manual-tab.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+/* ── Content Area ──────────────────────────────────────────── */
+.manual-content-area {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  padding: var(--space-6);
+  min-height: 600px;
+}
+
+.manual-tab-content {
+  display: none;
+}
+
+.manual-tab-content.active {
+  display: block;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Content Styling ───────────────────────────────────────── */
+.manual-tab-content h1 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-black);
+  color: var(--color-text);
+  margin: 0 0 var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.manual-tab-content h2 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin: var(--space-6) 0 var(--space-3);
+}
+
+.manual-tab-content h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: var(--space-5) 0 var(--space-2);
+}
+
+.manual-tab-content p {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text);
+  margin: 0 0 var(--space-3);
+}
+
+.manual-tab-content ul,
+.manual-tab-content ol {
+  margin: 0 0 var(--space-4);
+  padding-left: var(--space-5);
+  line-height: var(--line-height-relaxed);
+}
+
+.manual-tab-content li {
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+}
+
+.manual-tab-content strong {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+}
+
+.manual-tab-content em {
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+.manual-tab-content code {
+  background: var(--color-background);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.info-box {
+  background: var(--color-primary-light);
+  border-left: 4px solid var(--color-primary);
+  padding: var(--space-4);
+  margin: var(--space-4) 0;
+  border-radius: var(--radius-md);
+}
+
+.info-box h4 {
+  margin: 0 0 var(--space-2);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+.info-box p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .manual-hero {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  .manual-hero__icon {
+    font-size: 56px;
+    text-align: center;
+  }
+  .manual-hero__actions {
+    flex-direction: column;
+  }
+  .manual-page-header {
+    padding: var(--space-4) var(--space-3);
+  }
+  .manual-container {
+    padding: var(--space-4) var(--space-3);
+  }
+  .manual-content-area {
+    padding: var(--space-4);
+  }
+  .manual-tabs {
+    gap: var(--space-1);
+  }
+  .manual-tab {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-xs);
+  }
+}
+
+[data-theme="dark"] .manual-content-area {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .info-box {
+  background: rgba(168, 0, 28, 0.1);
+}

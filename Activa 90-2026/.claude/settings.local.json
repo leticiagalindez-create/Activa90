@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import docx; print\\(''python-docx available''\\)\")",
+      "Bash(unzip -p \"C:/Users/JEMA/Downloads/Activa 90-2026-20260305T191123Z-3-001/Activa 90-2026/3.0 CLINICA_ Atendiendo clientes como Consultor Inmobiliario.docx\" word/document.xml)",
+      "Bash(sed 's/<[^>]*>//g')",
+      "Bash(unzip -p \"C:/Users/JEMA/Downloads/Activa 90-2026-20260305T191123Z-3-001/Activa 90-2026/3.2 WORKBOOK DEL ASESOR comunicación asertiva.docx\" word/document.xml)",
+      "Bash(unzip -p \"C:/Users/JEMA/Downloads/Activa 90-2026-20260305T191123Z-3-001/Activa 90-2026/4.0-Comunicación Asertiva_.docx\" word/document.xml)",
+      "Bash(unzip -p \"C:/Users/JEMA/Downloads/Activa 90-2026-20260305T191123Z-3-001/Activa 90-2026/4.1Workbook - GUÍA DEL INSTRUCTOR Comunicación Asertiva.docx\" word/document.xml)",
+      "Bash(unzip -p \"C:/Users/JEMA/Downloads/Activa 90-2026-20260305T191123Z-3-001/Activa 90-2026/5.1 Clinica, Listados Manual del Instructor.docx\" word/document.xml)",
+      "Bash(unzip -p \"C:/Users/JEMA/Downloads/Activa 90-2026-20260305T191123Z-3-001/Activa 90-2026/5.2 Workbook Clínica Avanzada de Listados.docx\" word/document.xml)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(python -m http.server:*)",
+      "Bash(timeout:*)",
+      "Bash(pandoc:*)",
+      "Bash(apt-get update:*)",
+      "Bash(apt-get install:*)",
+      "Bash(python:*)",
+      "Bash(pip install:*)"
+    ]
+  }
+}

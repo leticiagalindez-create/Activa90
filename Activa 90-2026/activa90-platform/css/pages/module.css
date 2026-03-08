@@ -1,0 +1,685 @@
+/* ============================================================
+   ACTIVA 90 — Module Page Styles
+   ============================================================ */
+
+.page-module {
+  background-color: var(--color-bg);
+  min-height:       100vh;
+}
+
+.module-page-layout {
+  max-width:   var(--max-width);
+  margin:      0 auto;
+  padding:     var(--space-8) var(--content-padding) var(--space-16);
+}
+
+/* ── Module Header ──────────────────────────────────────────── */
+.module-header {
+  margin-bottom: var(--space-8);
+}
+
+.module-header__meta {
+  display:       flex;
+  align-items:   center;
+  gap:           var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.module-number-badge {
+  display:          inline-flex;
+  align-items:      center;
+  padding:          var(--space-2) var(--space-4);
+  background-color: var(--color-primary);
+  color:            var(--color-white);
+  border-radius:    var(--radius-full);
+  font-size:        var(--font-size-xs);
+  font-weight:      var(--font-weight-bold);
+  letter-spacing:   0.08em;
+  text-transform:   uppercase;
+}
+
+.module-status-badge {
+  display:     none;
+}
+.module-status-badge.visible {
+  display:     inline-flex;
+}
+
+.module-header h1 {
+  font-size:    var(--font-size-3xl);
+  font-weight:  var(--font-weight-black);
+  color:        var(--color-text);
+  margin-bottom: var(--space-3);
+  line-height:  var(--line-height-tight);
+}
+
+.module-header__subtitle {
+  font-size:  var(--font-size-md);
+  color:      var(--color-text-muted);
+  margin:     0;
+}
+
+/* ── Tab Container ──────────────────────────────────────────── */
+.module-tabs-container {
+  background-color: var(--color-surface);
+  border:           1px solid var(--color-border);
+  border-radius:    var(--radius-xl);
+  overflow:         hidden;
+  box-shadow:       var(--shadow-sm);
+}
+
+.module-tabs-container .tab-nav {
+  padding:       0 var(--space-6);
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-surface-raised);
+}
+
+.module-tabs-container .tab-panel {
+  padding: var(--space-8);
+  min-height: 400px;
+}
+
+/* ── DOCX Viewer Area ────────────────────────────────────────── */
+.docx-viewer-area {
+  position: relative;
+}
+
+/* Loading skeleton for DOCX */
+.docx-loading {
+  padding: var(--space-4);
+}
+.docx-loading__line {
+  height:        1em;
+  margin-bottom: var(--space-3);
+  border-radius: var(--radius-md);
+}
+.docx-loading__line--short { width: 40%; }
+.docx-loading__line--mid   { width: 65%; }
+
+/* Error state */
+.docx-error {
+  display:          flex;
+  flex-direction:   column;
+  align-items:      center;
+  text-align:       center;
+  padding:          var(--space-12) var(--space-8);
+  gap:              var(--space-4);
+}
+
+.docx-error__icon {
+  font-size:        2.5rem;
+  line-height:      1;
+  opacity:          0.5;
+}
+
+.docx-error__title {
+  font-size:    var(--font-size-lg);
+  font-weight:  var(--font-weight-bold);
+  color:        var(--color-text);
+}
+
+.docx-error__message {
+  font-size:  var(--font-size-sm);
+  color:      var(--color-text-muted);
+  max-width:  400px;
+  margin:     0;
+}
+
+/* ── Workbook Download Card ──────────────────────────────── */
+.workbook-dl-card {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  text-align:     center;
+  padding:        var(--space-12) var(--space-8);
+  gap:            var(--space-4);
+}
+
+.workbook-dl-card__icon {
+  font-size:   3.5rem;
+  line-height: 1;
+}
+
+.workbook-dl-card__title {
+  font-size:   var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color:       var(--color-text);
+  margin:      0;
+}
+
+.workbook-dl-card__desc {
+  font-size:   var(--font-size-md);
+  color:       var(--color-text-muted);
+  max-width:   480px;
+  margin:      0;
+  line-height: var(--line-height-relaxed);
+}
+
+.workbook-dl-card__btn {
+  margin-top: var(--space-2);
+  padding:    var(--space-4) var(--space-8);
+  font-size:  var(--font-size-md);
+}
+
+.workbook-dl-card__meta {
+  font-size: var(--font-size-xs);
+  color:     var(--color-text-subtle);
+  margin:    0;
+}
+
+/* ── PPTX Inline Viewer ──────────────────────────────────── */
+.pptx-viewer-wrap {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-4);
+}
+
+.pptx-selector {
+  display:   flex;
+  gap:       var(--space-2);
+  flex-wrap: wrap;
+}
+
+.pptx-selector__btn {
+  padding:     var(--space-2) var(--space-4);
+  border:      1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background:  var(--color-bg);
+  color:       var(--color-text-muted);
+  font-size:   var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-family);
+  cursor:      pointer;
+  transition:  all 0.15s ease;
+}
+
+.pptx-selector__btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.pptx-selector__btn.active { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+
+.pptx-viewer-stage {
+  background:    #e8e8e8;
+  border-radius: var(--radius-lg);
+  overflow:      hidden;
+  min-height:    200px;
+}
+
+.pptx-spinner {
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  justify-content: center;
+  gap:             var(--space-4);
+  padding:         var(--space-16) var(--space-8);
+  color:           var(--color-text-muted);
+  font-size:       var(--font-size-sm);
+}
+
+.pptx-spinner__ring {
+  width:  40px;
+  height: 40px;
+  border: 3px solid var(--color-border);
+  border-top: 3px solid var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.pptx-slides-host { background: white; width: 100%; }
+
+.pptx-slide-wrap {
+  position:   relative;
+  width:      100%;
+  overflow:   hidden;
+  background: white;
+}
+
+.pptx-nav {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-3);
+  padding:     var(--space-3) var(--space-4);
+  background:  var(--color-surface-raised);
+  border-top:  1px solid var(--color-border);
+}
+
+.pptx-nav__btn {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  width:  36px;
+  height: 36px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color:      var(--color-text);
+  cursor:     pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.pptx-nav__btn:hover:not(:disabled) { border-color: var(--color-primary); color: var(--color-primary); }
+.pptx-nav__btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+.pptx-nav__counter {
+  font-size:   var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color:       var(--color-text-muted);
+  min-width:   60px;
+  text-align:  center;
+}
+
+.pptx-nav__dl { margin-left: auto; }
+
+.pptx-load-gate, .pptx-fallback {
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  text-align:      center;
+  padding:         var(--space-12) var(--space-8);
+  gap:             var(--space-3);
+}
+
+.pptx-load-gate__icon, .pptx-fallback__icon { font-size: 3rem; line-height: 1; }
+.pptx-fallback__icon { opacity: 0.6; }
+
+.pptx-load-gate__title, .pptx-fallback__name {
+  font-size:   var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color:       var(--color-text);
+  margin:      0;
+}
+
+.pptx-load-gate__info, .pptx-fallback__reason {
+  font-size: var(--font-size-sm);
+  color:     var(--color-text-muted);
+  margin:    0;
+}
+
+.pptx-load-gate__actions {
+  display:         flex;
+  gap:             var(--space-3);
+  flex-wrap:       wrap;
+  justify-content: center;
+  margin-top:      var(--space-2);
+}
+
+.pptx-fallback__meta {
+  font-size: var(--font-size-xs);
+  color:     var(--color-text-subtle);
+  margin:    0;
+}
+
+/* ── Enhanced Presentation Card ────────────────────────────── */
+.pptx-presentation-card {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  text-align:     center;
+  padding:        var(--space-10) var(--space-8);
+  gap:            var(--space-6);
+  background:     linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-raised) 100%);
+  border-radius:  var(--radius-lg);
+}
+
+.pptx-presentation-card__preview {
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  gap:             var(--space-3);
+}
+
+.pptx-presentation-card__icon {
+  display:     flex;
+  align-items: center;
+  justify-content: center;
+  width:       120px;
+  height:      100px;
+}
+
+.pptx-presentation-card__slides-hint {
+  font-size:    var(--font-size-xs);
+  color:        var(--color-primary);
+  font-weight:  var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding:      var(--space-1) var(--space-3);
+  background:   var(--color-primary-light);
+  border-radius: var(--radius-full);
+}
+
+.pptx-presentation-card__info {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-2);
+  max-width:      500px;
+}
+
+.pptx-presentation-card__title {
+  font-size:    var(--font-size-xl);
+  font-weight:  var(--font-weight-bold);
+  color:        var(--color-text);
+  margin:       0;
+  line-height:  var(--line-height-tight);
+}
+
+.pptx-presentation-card__meta {
+  display:      flex;
+  align-items:  center;
+  justify-content: center;
+  gap:          var(--space-4);
+  font-size:    var(--font-size-sm);
+  color:        var(--color-text-muted);
+}
+
+.pptx-presentation-card__note {
+  font-size:    var(--font-size-sm);
+  color:        var(--color-text-muted);
+  margin:       var(--space-2) 0 0;
+  line-height:  var(--line-height-relaxed);
+}
+
+.pptx-presentation-card__actions {
+  display:      flex;
+  align-items:  center;
+  gap:          var(--space-3);
+  flex-wrap:    wrap;
+  justify-content: center;
+  margin-top:   var(--space-2);
+}
+
+.pptx-presentation-card__download {
+  display:     inline-flex;
+  align-items: center;
+  gap:         var(--space-2);
+  padding:     var(--space-4) var(--space-6);
+  font-size:   var(--font-size-base);
+}
+
+.pptx-presentation-card__try-view {
+  display:     inline-flex;
+  align-items: center;
+  gap:         var(--space-2);
+}
+
+/* ── Error State ─────────────────────────────────────────── */
+.pptx-error-state {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  text-align:     center;
+  padding:        var(--space-12) var(--space-8);
+  gap:            var(--space-4);
+}
+
+.pptx-error-state__icon {
+  font-size:    3rem;
+  line-height:  1;
+}
+
+.pptx-error-state__title {
+  font-size:    var(--font-size-lg);
+  font-weight:  var(--font-weight-bold);
+  color:        var(--color-text);
+  margin:       0;
+}
+
+.pptx-error-state__message {
+  font-size:  var(--font-size-sm);
+  color:      var(--color-text-muted);
+  margin:     0;
+}
+
+.pptx-error-state__actions {
+  display:      flex;
+  gap:          var(--space-3);
+  flex-wrap:    wrap;
+  justify-content: center;
+  margin-top:   var(--space-2);
+}
+
+.pptx-error-state__hint {
+  font-size:  var(--font-size-xs);
+  color:      var(--color-text-subtle);
+  margin:     var(--space-4) 0 0;
+  max-width:  400px;
+}
+
+/* ── Inline Viewer Container ─────────────────────────────── */
+.pptx-inline-viewer {
+  display:        flex;
+  flex-direction: column;
+  border-radius:  var(--radius-lg);
+  overflow:       hidden;
+  background:     #f8f8f8;
+}
+
+[data-theme="dark"] .pptx-inline-viewer {
+  background:     #2a2a2a;
+}
+
+.pptx-spinner__hint {
+  font-size:  var(--font-size-xs);
+  color:      var(--color-text-subtle);
+  margin:     0;
+}
+
+/* ── Google Slides Embed ────────────────────────────────────── */
+.google-slides-embed {
+  display:        flex;
+  flex-direction: column;
+  border-radius:  var(--radius-lg);
+  overflow:       hidden;
+  background:     var(--color-surface);
+  border:         1px solid var(--color-border);
+  box-shadow:     var(--shadow-sm);
+  width:          100%;
+  margin:         0 auto;
+  max-width:      1400px;
+}
+
+.google-slides-embed__header {
+  display:          flex;
+  align-items:      center;
+  justify-content:  space-between;
+  padding:          var(--space-5) var(--space-6);
+  background:       var(--color-surface-raised);
+  border-bottom:    1px solid var(--color-border);
+  gap:              var(--space-4);
+  flex-wrap:        wrap;
+}
+
+.google-slides-embed__info {
+  flex:           1;
+  min-width:      200px;
+}
+
+.google-slides-embed__title {
+  font-size:      var(--font-size-md);
+  font-weight:    var(--font-weight-bold);
+  color:          var(--color-text);
+  margin:         0 0 var(--space-1) 0;
+  line-height:    var(--line-height-tight);
+}
+
+.google-slides-embed__subtitle {
+  font-size:      var(--font-size-xs);
+  color:          var(--color-text-muted);
+  margin:         0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.google-slides-embed__actions {
+  display:     flex;
+  gap:         var(--space-2);
+  flex-wrap:   wrap;
+}
+
+.google-slides-embed__container {
+  position:       relative;
+  width:          100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  background:     #000;
+  overflow:       hidden;
+}
+
+.google-slides-embed__iframe {
+  position:   absolute;
+  top:        0;
+  left:       0;
+  width:      100%;
+  height:     100%;
+  border:     none;
+}
+
+/* Dark mode adjustments for embed */
+[data-theme="dark"] .google-slides-embed {
+  background: var(--color-surface);
+}
+
+[data-theme="dark"] .google-slides-embed__header {
+  background: var(--color-surface-raised);
+}
+
+/* ── Google Form Embed ──────────────────────────────────────── */
+.google-form-embed {
+  display:        flex;
+  flex-direction: column;
+  border-radius:  var(--radius-lg);
+  overflow:       hidden;
+  background:     var(--color-surface);
+  border:         1px solid var(--color-border);
+  box-shadow:     var(--shadow-sm);
+  width:          100%;
+  margin:         0 auto;
+  max-width:      900px;
+}
+
+.google-form-embed__header {
+  display:          flex;
+  align-items:      center;
+  justify-content:  space-between;
+  padding:          var(--space-5) var(--space-6);
+  background:       var(--color-surface-raised);
+  border-bottom:    1px solid var(--color-border);
+  gap:              var(--space-4);
+  flex-wrap:        wrap;
+}
+
+.google-form-embed__info {
+  flex:           1;
+  min-width:      200px;
+}
+
+.google-form-embed__title {
+  font-size:      var(--font-size-md);
+  font-weight:    var(--font-weight-bold);
+  color:          var(--color-text);
+  margin:         0 0 var(--space-1) 0;
+  line-height:    var(--line-height-tight);
+}
+
+.google-form-embed__subtitle {
+  font-size:      var(--font-size-sm);
+  color:          var(--color-text-muted);
+  margin:         0;
+}
+
+.google-form-embed__actions {
+  display:     flex;
+  gap:         var(--space-2);
+  flex-wrap:   wrap;
+}
+
+.google-form-embed__container {
+  position:       relative;
+  width:          100%;
+  height:         800px;
+  background:     var(--color-surface);
+  overflow:       hidden;
+}
+
+.google-form-embed__iframe {
+  position:   absolute;
+  top:        0;
+  left:       0;
+  width:      100%;
+  height:     100%;
+  border:     none;
+}
+
+/* Dark mode adjustments for form embed */
+[data-theme="dark"] .google-form-embed {
+  background: var(--color-surface);
+}
+
+[data-theme="dark"] .google-form-embed__header {
+  background: var(--color-surface-raised);
+}
+
+/* ── Module Completion Footer ────────────────────────────────── */
+.module-completion-footer {
+  display:          flex;
+  align-items:      center;
+  justify-content:  space-between;
+  gap:              var(--space-4);
+  padding:          var(--space-6) var(--space-8);
+  background-color: var(--color-surface);
+  border:           1px solid var(--color-border);
+  border-radius:    var(--radius-xl);
+  margin-top:       var(--space-8);
+  box-shadow:       var(--shadow-sm);
+}
+
+.module-completion-footer__info p {
+  font-size:    var(--font-size-sm);
+  color:        var(--color-text-muted);
+  margin:       0;
+}
+
+.module-completion-footer__info .hint {
+  font-size:  var(--font-size-xs);
+  color:      var(--color-text-subtle);
+  margin-top: var(--space-1);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .module-tabs-container .tab-panel { padding: var(--space-5); }
+  .pptx-card { flex-direction: column; }
+  .module-completion-footer { flex-direction: column; text-align: center; }
+
+  /* Full width on mobile for better viewing */
+  .google-slides-embed {
+    width: 100%;
+  }
+
+  .google-slides-embed__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .google-slides-embed__actions {
+    width: 100%;
+  }
+
+  /* Google Form responsive */
+  .google-form-embed {
+    width: 100%;
+  }
+
+  .google-form-embed__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .google-form-embed__actions {
+    width: 100%;
+  }
+
+  .google-form-embed__container {
+    height: 600px;
+  }
+}

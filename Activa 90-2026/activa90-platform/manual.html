@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual de Orientación — Activa 90</title>
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/mammoth-overrides.css">
+  <link rel="stylesheet" href="css/pages/manual.css">
+  <script src="js/theme.js"></script>
+
+  <!-- Mammoth.js for DOCX rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
+</head>
+<body class="page-manual">
+
+  <!-- ── App Header ───────────────────────────────────────────── -->
+  <header class="app-header">
+    <a href="dashboard.html" class="header__logo">
+      <img src="KWLogo.png" alt="Keller Williams" class="header__kw-logo">
+      <span class="header__logo-text">Activa <span>90</span></span>
+    </a>
+
+    <nav class="header__nav">
+      <a href="dashboard.html" class="nav-link">🏠 Inicio</a>
+      <a href="manual.html" class="nav-link active">📖 Manual</a>
+      <a href="resources.html" class="nav-link">📦 Recursos</a>
+    </nav>
+
+    <div class="header__user">
+      <button class="theme-toggle" aria-label="Cambiar tema">
+        <svg class="theme-toggle__icon theme-toggle__sun" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg class="theme-toggle__icon theme-toggle__moon" viewBox="0 0 24 24">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+      <div class="user-avatar" id="user-avatar">?</div>
+      <span class="user-name" id="user-name-display"></span>
+      <button id="signout-btn" class="btn btn-ghost btn-sm">Salir</button>
+    </div>
+  </header>
+
+  <!-- ── Manual Main ─────────────────────────────────────────────── -->
+  <main class="manual-main">
+
+    <!-- Page Header -->
+    <div class="manual-page-header">
+      <nav class="breadcrumb">
+        <a href="dashboard.html">Inicio</a>
+        <span class="breadcrumb__separator">/</span>
+        <span class="breadcrumb__current">Manual de Orientación</span>
+      </nav>
+
+      <div class="manual-hero">
+        <div class="manual-hero__icon">📖</div>
+        <div class="manual-hero__content">
+          <h1 class="manual-hero__title">Manual de Orientación del Estudiante</h1>
+          <p class="manual-hero__subtitle">KW Activa 90 — Guía Completa 2026</p>
+          <p class="manual-hero__description">
+            Tu guía completa para navegar el programa Activa 90. Encuentra toda la información
+            que necesitas sobre estructura del programa, expectativas, recursos y más.
+          </p>
+        </div>
+        <div class="manual-hero__actions">
+          <a href="#" id="download-manual-btn" class="btn btn-primary" download>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Descargar PDF
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Manual Content with Tabs -->
+    <div class="manual-container">
+
+      <!-- Tab Navigation -->
+      <div class="manual-tabs" id="manual-tabs">
+        <button class="manual-tab active" data-tab="programa">📋 Programa</button>
+        <button class="manual-tab" data-tab="estructura">🏗️ Estructura</button>
+        <button class="manual-tab" data-tab="clinicas">📚 Clínicas</button>
+        <button class="manual-tab" data-tab="workbook">📝 Workbook</button>
+        <button class="manual-tab" data-tab="comunicacion">💬 Comunicación</button>
+        <button class="manual-tab" data-tab="prompts">🤖 Prompts IA</button>
+        <button class="manual-tab" data-tab="compromiso">✍️ Compromiso</button>
+      </div>
+
+      <!-- Tab Content Area -->
+      <div class="manual-content-area">
+        <div class="manual-tab-content active" id="tab-programa"></div>
+        <div class="manual-tab-content" id="tab-estructura"></div>
+        <div class="manual-tab-content" id="tab-clinicas"></div>
+        <div class="manual-tab-content" id="tab-workbook"></div>
+        <div class="manual-tab-content" id="tab-comunicacion"></div>
+        <div class="manual-tab-content" id="tab-prompts"></div>
+        <div class="manual-tab-content" id="tab-compromiso"></div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────────────── -->
+  <footer class="app-footer">
+    <p>© 2026 Activa 90 · Keller Williams · Programa de Entrenamiento Inmobiliario</p>
+  </footer>
+
+  <!-- ── Scripts ──────────────────────────────────────────────── -->
+  <script src="js/config.js"></script>
+  <script type="module" src="js/auth-guard.js"></script>
+  <script type="module" src="js/modules/manual.js"></script>
+
+</body>
+</html>

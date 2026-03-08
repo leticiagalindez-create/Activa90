@@ -1,0 +1,157 @@
+/* ============================================================
+   ACTIVA 90 — Resources Page Styles
+   ============================================================ */
+
+.page-resources {
+  background-color: var(--color-bg);
+  min-height:       100vh;
+}
+
+.resources-main {
+  max-width:   var(--max-width);
+  margin:      0 auto;
+  padding:     var(--space-8) var(--content-padding) var(--space-16);
+}
+
+/* ── Page Header ─────────────────────────────────────────────── */
+.resources-page-header {
+  margin-bottom:  var(--space-10);
+  padding-bottom: var(--space-8);
+  border-bottom:  1px solid var(--color-border);
+}
+
+.resources-page-header h1 {
+  font-size:     var(--font-size-3xl);
+  font-weight:   var(--font-weight-black);
+  color:         var(--color-text);
+  margin-bottom: var(--space-3);
+  line-height:   var(--line-height-tight);
+}
+
+.resources-page-header p {
+  font-size:  var(--font-size-md);
+  color:      var(--color-text-muted);
+  margin:     0;
+}
+
+/* ── Resource Section ────────────────────────────────────────── */
+.resources-section {
+  margin-bottom: var(--space-12);
+}
+
+/* ── Resource Cards ──────────────────────────────────────────── */
+.resources-grid {
+  display:               grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap:                   var(--space-5);
+}
+
+.resource-card {
+  background-color: var(--color-surface);
+  border:           1px solid var(--color-border);
+  border-radius:    var(--radius-xl);
+  padding:          var(--space-6);
+  display:          flex;
+  flex-direction:   column;
+  gap:              var(--space-4);
+  transition:       box-shadow var(--transition-normal),
+                    transform var(--transition-normal);
+}
+
+.resource-card:hover {
+  box-shadow: var(--shadow-md);
+  transform:  translateY(-2px);
+}
+
+.resource-card__top {
+  display:         flex;
+  align-items:     flex-start;
+  justify-content: space-between;
+}
+
+.resource-card__icon {
+  width:            52px;
+  height:           52px;
+  border-radius:    var(--radius-lg);
+  background-color: var(--color-primary-light);
+  display:          flex;
+  align-items:      center;
+  justify-content:  center;
+  font-size:        1.625rem;
+  flex-shrink:      0;
+}
+
+.resource-card__body {
+  flex: 1;
+}
+
+.resource-card__title {
+  font-size:     var(--font-size-md);
+  font-weight:   var(--font-weight-bold);
+  color:         var(--color-text);
+  margin-bottom: var(--space-2);
+  line-height:   var(--line-height-snug);
+}
+
+.resource-card__desc {
+  font-size:   var(--font-size-sm);
+  color:       var(--color-text-muted);
+  line-height: var(--line-height-normal);
+  margin:      0;
+}
+
+.resource-card__footer {
+  margin-top:   auto;
+  padding-top:  var(--space-4);
+  border-top:   1px solid var(--color-border-light);
+}
+
+/* ── Forms Section ───────────────────────────────────────────── */
+.forms-section {
+  background-color: var(--color-surface);
+  border:           1px solid var(--color-border);
+  border-radius:    var(--radius-xl);
+  padding:          var(--space-8);
+}
+
+.forms-placeholder {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  text-align:     center;
+  gap:            var(--space-3);
+  padding:        var(--space-8) var(--space-4);
+}
+
+.forms-placeholder__icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  opacity: 0.5;
+}
+
+.forms-placeholder h3 {
+  font-size:    var(--font-size-lg);
+  font-weight:  var(--font-weight-bold);
+  color:        var(--color-text);
+}
+
+.forms-placeholder p {
+  font-size:    var(--font-size-sm);
+  color:        var(--color-text-muted);
+  max-width:    420px;
+  margin:       0;
+  line-height:  var(--line-height-relaxed);
+}
+
+.forms-placeholder code {
+  font-size:        var(--font-size-xs);
+  background-color: var(--color-border-light);
+  padding:          2px var(--space-2);
+  border-radius:    var(--radius-sm);
+  color:            var(--color-primary);
+  font-family:      'Courier New', monospace;
+}
+
+@media (max-width: 640px) {
+  .resources-grid { grid-template-columns: 1fr; }
+}
