@@ -3,7 +3,7 @@
    Auth modal, sign-in/sign-up handlers
    ============================================================ */
 
-import { signIn, signUp, getCurrentUser, sendPasswordReset, updatePassword, exchangeCode } from '../supabase-client.js';
+import { signIn, signUp, getCurrentUser, sendPasswordReset, updatePassword, exchangeCode, onAuthStateChange } from '../supabase-client.js';
 import { showToast, setButtonLoading }    from '../utils.js';
 
 /* ── Redirect if already logged in ─────────────────────────── */
@@ -213,20 +213,15 @@ forgotSubmit?.addEventListener('click', async () => {
 });
 
 /* ── Handle password recovery redirect ─────────────────────── */
-(async function handleRecovery() {
-  const params = new URLSearchParams(window.location.search);
-  const code = params.get('code');
-
-  if (code) {
-    const { error } = await exchangeCode(code);
+// Works for both PKCE (?code=) and legacy (#access_token&type=recovery) flows.
+// Supabase JS auto-detects the URL and fires PASSWORD_RECOVERY when appropriate.
+onAuthStateChange((event) => {
+  if (event === 'PASSWORD_RECOVERY') {
     window.history.replaceState(null, '', window.location.pathname);
-
-    if (!error) {
-      openModal('signin');
-      showPanel(resetForm);
-    }
+    openModal('signin');
+    showPanel(resetForm);
   }
-})();
+});
 
 resetSubmit?.addEventListener('click', async () => {
   const newPass     = document.getElementById('new-password').value;
