@@ -15,20 +15,30 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 const RESEND_API_KEY       = Deno.env.get('RESEND_API_KEY')!;
 const SUPABASE_URL         = Deno.env.get('SUPABASE_URL')!;
 const SUPABASE_SERVICE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
-const FROM                 = 'Activa 90 <hola@info.activa90.com>';
+const FROM                 = 'Activa 90 <lety@info.activa90.com>';
 const DASHBOARD_URL        = 'https://www.activa90.com/dashboard.html';
+
+const CORS = {
+  'Access-Control-Allow-Origin':  '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+};
 
 // ─── Handler ──────────────────────────────────────────────────────────────────
 serve(async (req: Request) => {
+  // Handle CORS preflight
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: CORS });
+  }
+
   // Only accept POST
   if (req.method !== 'POST') {
-    return new Response('Method Not Allowed', { status: 405 });
+    return new Response('Method Not Allowed', { status: 405, headers: CORS });
   }
 
   // Verify user JWT
   const authHeader = req.headers.get('authorization');
   if (!authHeader?.startsWith('Bearer ')) {
-    return new Response('Unauthorized', { status: 401 });
+    return new Response('Unauthorized', { status: 401, headers: CORS });
   }
 
   const adminClient = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY, {
@@ -38,7 +48,7 @@ serve(async (req: Request) => {
   const token = authHeader.replace('Bearer ', '');
   const { data: { user }, error: authErr } = await adminClient.auth.getUser(token);
   if (authErr || !user) {
-    return new Response('Unauthorized', { status: 401 });
+    return new Response('Unauthorized', { status: 401, headers: CORS });
   }
 
   // Get profile name
@@ -64,7 +74,7 @@ serve(async (req: Request) => {
   try {
     body = await req.json();
   } catch {
-    return new Response('Bad Request', { status: 400 });
+    return new Response('Bad Request', { status: 400, headers: CORS });
   }
 
   const { moduleName, moduleNumber, totalModules, completedModules, nextModuleName, nextModuleUrl } = body;
@@ -94,13 +104,13 @@ serve(async (req: Request) => {
     console.error('Resend error:', err);
     return new Response(JSON.stringify({ error: err }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { ...CORS, 'Content-Type': 'application/json' },
     });
   }
 
   return new Response(JSON.stringify({ message: 'Email sent' }), {
     status: 200,
-    headers: { 'Content-Type': 'application/json' },
+    headers: { ...CORS, 'Content-Type': 'application/json' },
   });
 });
 
