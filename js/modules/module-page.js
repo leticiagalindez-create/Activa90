@@ -3,8 +3,8 @@
    Dynamic tab router, lazy DOCX loading, completion gate
    ============================================================ */
 
-import { getCurrentUser, getProfile, signOut } from '../supabase-client.js';
-import { getModuleProgress, markTabVisited, markModuleComplete } from '../progress.js';
+import { supabase, getCurrentUser, getProfile, signOut } from '../supabase-client.js';
+import { getModuleProgress, markTabVisited, markModuleComplete, getAllProgress } from '../progress.js';
 import { loadDocx }         from '../docx-viewer.js';
 import { renderPptxCards }  from '../pptx-handler.js?v=2';
 import { showToast, getInitials, getFirstName, setButtonLoading } from '../utils.js';
@@ -256,12 +256,38 @@ async function handleComplete() {
     markCompleteUI(btn, hintEl);
     showToast(`¡Módulo ${moduleConfig.number} completado! 🎉`, 'success');
 
+    // Send progress email (fire-and-forget — don't block the user)
+    sendProgressEmail().catch(err => console.warn('Progress email error:', err));
+
     // Return to dashboard after short delay
     setTimeout(() => window.location.replace('dashboard.html'), 2000);
   } else {
     setButtonLoading(btn, false, 'Marcar como Completado');
     showToast('Error al guardar. Intenta de nuevo.', 'error');
   }
+}
+
+async function sendProgressEmail() {
+  const allProgress     = await getAllProgress(currentUser.id);
+  const completedCount  = allProgress.filter(p => p.completed).length;
+  const totalModules    = MODULES.length;
+
+  // Find the next module in the manifest
+  const currentIndex = MODULES.findIndex(m => m.id === moduleId);
+  const nextModule   = MODULES[currentIndex + 1];
+
+  await supabase.functions.invoke('send-progress-email', {
+    body: {
+      moduleName:       moduleConfig.title,
+      moduleNumber:     moduleConfig.number,
+      totalModules,
+      completedModules: completedCount,
+      nextModuleName:   nextModule?.title,
+      nextModuleUrl:    nextModule
+        ? `https://www.activa90.com/module.html?module=${nextModule.id}`
+        : null,
+    },
+  });
 }
 
 function markCompleteUI(btn, hintEl) {

@@ -168,15 +168,6 @@ const MODULES = [
 /* ── Resources Manifest ───────────────────────────────────── */
 const RESOURCES = [
   {
-    id:          'integrantes',
-    title:       'Integrantes Activa 90',
-    description: 'Directorio completo de participantes del programa cohorte 2026.',
-    file:        ASSETS_BASE + 'Integrantes Activa 90.xlsx',
-    icon:        '👥',
-    category:    'Equipo',
-    color:       '#5C5C5C'
-  },
-  {
     id:          'metricas',
     title:       'Métricas Activa 90',
     description: 'Hoja de seguimiento de métricas de rendimiento individual y grupal del programa.',
