@@ -215,10 +215,9 @@ forgotSubmit?.addEventListener('click', async () => {
 /* ── Handle password recovery redirect ─────────────────────── */
 (async function handleRecovery() {
   const params = new URLSearchParams(window.location.search);
-  const code   = params.get('code');
-  const type   = params.get('type');
+  const code = params.get('code');
 
-  if (code && type === 'recovery') {
+  if (code) {
     const { error } = await exchangeCode(code);
     window.history.replaceState(null, '', window.location.pathname);
 
