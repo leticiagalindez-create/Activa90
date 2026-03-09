@@ -1,0 +1,238 @@
+/* ============================================================
+   ACTIVA 90 — Profile Page Styles
+   ============================================================ */
+
+.page-profile {
+  background-color: var(--color-bg);
+  min-height: 100vh;
+}
+
+.profile-main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--content-padding) var(--space-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+/* ── Page Header ─────────────────────────────────────────────── */
+.profile-page-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.profile-back-btn {
+  flex-shrink: 0;
+}
+
+.profile-page-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-black);
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* ── Profile Hero Card ───────────────────────────────────────── */
+.profile-hero-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8) var(--space-10);
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-hero-card::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  border: 44px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-full);
+  pointer-events: none;
+}
+
+.profile-avatar-lg {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-full);
+  background-color: rgba(255,255,255,0.2);
+  border: 3px solid rgba(255,255,255,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-black);
+  color: white;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  text-transform: uppercase;
+}
+
+.profile-hero-info {
+  position: relative;
+  z-index: 1;
+}
+
+.profile-hero-name {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-black);
+  color: white;
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-1);
+}
+
+.profile-hero-email {
+  font-size: var(--font-size-sm);
+  color: rgba(255,255,255,0.72);
+  margin-bottom: var(--space-1);
+}
+
+.profile-hero-bio {
+  font-size: var(--font-size-sm);
+  color: rgba(255,255,255,0.55);
+  font-style: italic;
+}
+
+/* ── Section ─────────────────────────────────────────────────── */
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  scroll-margin-top: calc(var(--header-height) + var(--space-6));
+}
+
+.profile-section-header {
+  padding-bottom: var(--space-1);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.profile-section-title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin: 0 0 var(--space-1);
+}
+
+.profile-section-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ── Profile Card (form container) ──────────────────────────── */
+.profile-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+/* Highlight ring when arriving from password reset email */
+.profile-card--highlight {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-muted), var(--shadow-md);
+}
+
+.profile-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-light);
+  flex-wrap: wrap;
+}
+
+/* ── Form Elements ───────────────────────────────────────────── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.form-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.form-label-optional {
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-subtle);
+}
+
+.form-input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: var(--line-height-normal);
+}
+
+/* ── Feedback Messages ───────────────────────────────────────── */
+.form-feedback {
+  font-size: var(--font-size-sm);
+  margin: 0;
+  flex: 1;
+}
+
+.form-feedback.success {
+  color: var(--color-success);
+}
+
+.form-feedback.error {
+  color: var(--color-error);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .profile-hero-card {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--space-6);
+  }
+
+  .profile-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .profile-card-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .profile-card-footer .btn {
+    width: 100%;
+  }
+}

@@ -213,13 +213,11 @@ forgotSubmit?.addEventListener('click', async () => {
 });
 
 /* ── Handle password recovery redirect ─────────────────────── */
-// Works for both PKCE (?code=) and legacy (#access_token&type=recovery) flows.
-// Supabase JS auto-detects the URL and fires PASSWORD_RECOVERY when appropriate.
+// If for any reason the user lands on index.html with a recovery token,
+// redirect them to the profile page where the password form lives.
 onAuthStateChange((event) => {
   if (event === 'PASSWORD_RECOVERY') {
-    window.history.replaceState(null, '', window.location.pathname);
-    openModal('signin');
-    showPanel(resetForm);
+    window.location.replace('profile.html');
   }
 });
 

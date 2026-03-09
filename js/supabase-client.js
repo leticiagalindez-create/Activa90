@@ -68,7 +68,7 @@ export async function updateProfile(userId, updates) {
 /* ── Reset Password (send email) ────────────────────────────── */
 export async function sendPasswordReset(email) {
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: 'https://www.activa90.com/index.html'
+    redirectTo: 'https://www.activa90.com/profile.html'
   });
   return { error };
 }

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Perfil — Activa 90</title>
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages/profile.css">
+  <script src="js/theme.js"></script>
+</head>
+<body class="page-profile">
+
+  <!-- ── App Header ───────────────────────────────────────────── -->
+  <header class="app-header">
+    <a href="dashboard.html" class="header__logo">
+      <img src="KWLogo.png" alt="Keller Williams" class="header__kw-logo">
+      <span class="header__logo-text">Activa <span>90</span></span>
+    </a>
+
+    <nav class="header__nav">
+      <a href="dashboard.html" class="nav-link">🏠 Inicio</a>
+      <a href="manual.html" class="nav-link">📖 Manual</a>
+      <a href="resources.html" class="nav-link">📦 Recursos</a>
+    </nav>
+
+    <div class="header__user">
+      <button class="theme-toggle" aria-label="Cambiar tema">
+        <svg class="theme-toggle__icon theme-toggle__sun" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg class="theme-toggle__icon theme-toggle__moon" viewBox="0 0 24 24">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+      <div class="user-avatar" id="user-avatar">?</div>
+      <span class="user-name" id="user-name-display"></span>
+      <button id="signout-btn" class="btn btn-ghost btn-sm">Salir</button>
+    </div>
+  </header>
+
+  <!-- ── Profile Main ──────────────────────────────────────────── -->
+  <main class="profile-main">
+
+    <!-- Page Header -->
+    <div class="profile-page-header">
+      <a href="dashboard.html" class="btn btn-ghost btn-sm profile-back-btn">← Volver al inicio</a>
+      <h1 class="profile-page-title">Mi Perfil</h1>
+    </div>
+
+    <!-- Profile Hero Card -->
+    <div class="profile-hero-card">
+      <div class="profile-avatar-lg" id="profile-avatar-lg">?</div>
+      <div class="profile-hero-info">
+        <div class="profile-hero-name" id="profile-hero-name">Cargando…</div>
+        <div class="profile-hero-email" id="profile-hero-email"></div>
+        <div class="profile-hero-bio" id="profile-hero-bio"></div>
+      </div>
+    </div>
+
+    <!-- ── Información Personal ───────────────────────────────── -->
+    <section class="profile-section" id="section-info">
+      <div class="profile-section-header">
+        <h2 class="profile-section-title">Información personal</h2>
+        <p class="profile-section-desc">Tu nombre y descripción visible en la plataforma.</p>
+      </div>
+      <form class="profile-card" id="info-form">
+        <div class="form-group">
+          <label class="form-label" for="field-name">Nombre completo</label>
+          <input class="form-input" type="text" id="field-name" name="full_name"
+                 placeholder="Tu nombre completo" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="field-bio">Descripción <span class="form-label-optional">(opcional)</span></label>
+          <textarea class="form-input form-textarea" id="field-bio" name="bio"
+                    rows="3" placeholder="Una breve descripción sobre ti…"></textarea>
+        </div>
+        <div class="profile-card-footer">
+          <p class="form-feedback" id="info-feedback" hidden></p>
+          <button type="submit" class="btn btn-primary" id="info-submit">Guardar cambios</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ── Correo Electrónico ─────────────────────────────────── -->
+    <section class="profile-section" id="section-email">
+      <div class="profile-section-header">
+        <h2 class="profile-section-title">Correo electrónico</h2>
+        <p class="profile-section-desc">Al cambiar tu correo recibirás un link de confirmación en la nueva dirección.</p>
+      </div>
+      <form class="profile-card" id="email-form">
+        <div class="form-group">
+          <label class="form-label" for="field-email">Correo actual</label>
+          <input class="form-input" type="email" id="field-email" name="email"
+                 placeholder="correo@ejemplo.com" autocomplete="email">
+        </div>
+        <div class="profile-card-footer">
+          <p class="form-feedback" id="email-feedback" hidden></p>
+          <button type="submit" class="btn btn-primary" id="email-submit">Actualizar correo</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ── Contraseña ─────────────────────────────────────────── -->
+    <section class="profile-section" id="section-password">
+      <div class="profile-section-header">
+        <h2 class="profile-section-title">Contraseña</h2>
+        <p class="profile-section-desc">Escoge una contraseña segura de al menos 8 caracteres.</p>
+      </div>
+      <form class="profile-card" id="password-form">
+        <div class="form-group">
+          <label class="form-label" for="field-new-password">Nueva contraseña</label>
+          <input class="form-input" type="password" id="field-new-password" name="new_password"
+                 placeholder="Mínimo 8 caracteres" autocomplete="new-password">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="field-confirm-password">Confirmar contraseña</label>
+          <input class="form-input" type="password" id="field-confirm-password" name="confirm_password"
+                 placeholder="Repite la contraseña" autocomplete="new-password">
+        </div>
+        <div class="profile-card-footer">
+          <p class="form-feedback" id="password-feedback" hidden></p>
+          <button type="submit" class="btn btn-primary" id="password-submit">Cambiar contraseña</button>
+        </div>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────────────── -->
+  <footer class="app-footer">
+    <p>© 2026 Activa 90 · Keller Williams · Programa de Entrenamiento Inmobiliario</p>
+  </footer>
+
+  <!-- ── Scripts ──────────────────────────────────────────────── -->
+  <script src="js/config.js"></script>
+  <script type="module" src="js/auth-guard.js"></script>
+  <script type="module" src="js/modules/profile.js"></script>
+
+</body>
+</html>
